@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/project-2');
+mongoose.connect('mongodb://localhost/Planning-Poker');
 
 var Author = require("./models/author");
 
@@ -9,70 +9,70 @@ Author.remove({}, function(err) {
   console.log(err);
 });
 
-var saintExupery = new Author({
-  first_name: 'Antoine',
-  last_name: 'de Saint-Exupery',
-  country: 'France',
-  book_title: 'The Little Prince',
-  publication_year: '1943'
+var grisham = new Author({
+  first_name: 'John',
+  last_name: 'Grisham',
+  category: 'thriller',
+  book_title: 'Confession',
+  publication_year: '2010'
 });
 
-var fforde = new Author({
-  first_name: 'Jasper',
-  last_name: 'Fforde',
-  country: 'England',
-  book_title: 'The Eyre Affair',
-  publication_year: '2001'
+var walker = new Author({
+  first_name: 'Alice',
+  last_name: 'Walker',
+  category: 'Fiction',
+  book_title: 'The Color Purple',
+  publication_year: '1982'
 });
 
-var willig = new Author({
-  first_name: 'Lauren',
-  last_name: 'Willig',
-  country: 'United States',
-  book_title: 'The Secret History of the Pink Carnation',
-  publication_year: '2000'
+var berendt = new Author({
+  first_name: 'John',
+  last_name: 'Berendt',
+  category: 'True Crime',
+  book_title: 'Midnight in the Garden of Good and Evil',
+  publication_year: '2009'
 });
 
-var lutz = new Author({
-  first_name: 'Lisa',
-  last_name: 'Lutz',
-  country: 'Unites States',
-  book_title: 'The Spellman Files: A Novel',
-  publication_year: '2007'
+var crothers = new Author({
+  first_name: 'Tim',
+  last_name: 'Crothers',
+  category: 'Unites States',
+  book_title: 'The Queen of Katwe',
+  publication_year: '2013'
 });
 
-saintExupery.save(function(err) {
+grisham.save(function(err) {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('de Saint-Exupery created!');
+  console.log('Grisham John created!');
 });
 
-fforde.save(function(err) {
+walker.save(function(err) {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('Fforde created!');
+  console.log('Walker Alice created!');
 });
 
-willig.save(function(err) {
+berendt.save(function(err) {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('Willig created!');
+  console.log('Berendt John created!');
 });
 
-lutz.save(function(err) {
+crothers.save(function(err) {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('Lutz created!');
+  console.log('Crothers Tim created!');
 });
