@@ -44,4 +44,26 @@ router.get('/:id', function(req, res) {
     });
 });
 
+router.post('/', function(req, res) {
+  var author = new Author({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    country: req.body.country,
+    book_title: req.body.book_title,
+    publication_year: req.body.publication_year
+  });
+  author.save(function(err, author){
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+     console.log(author);
+    // res.send(author);
+    res.render('author/show', {
+      author: author
+    });
+  });
+});
+
 module.exports = router;
