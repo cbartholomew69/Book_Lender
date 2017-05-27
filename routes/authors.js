@@ -21,4 +21,27 @@ router.get('/', function(req, res) {
     });
 });
 
+// new author
+router.get('/new', function(req, res) {
+  res.render('authors/new');
+});
+
+
+// show author
+router.get('/:id', function(req, res) {
+  Author.findById(req.params.id)
+    .exec(function(err, author) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+
+      console.log(author);
+      //res.send(author);
+      res.render('authors/show', {
+        author: author
+      });
+    });
+});
+
 module.exports = router;
