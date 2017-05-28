@@ -40,6 +40,32 @@ router.get('/:id/edit', function(req,res) {
   });
 });
 
+// USER CREATE ROUTE
+router.post('/', function (request, response) {
+
+    // grab the new user information from the form POST
+    var newUserFromForm = request.body;
+
+    // then create a new User from the User model in your schema
+    var user = new User({
+        first_name: newUserFromForm.first_name,
+        last_name: newUserFromForm.last_name,
+        email: newUserFromForm.email
+    });
+
+    // then save the new user to the database
+    user.save(function (err, user) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+
+        // once the new user has been saved, redirect to the users index page
+        response.redirect('/users');
+    });
+
+});
+
 // show author
 router.get('/:id', function(req, res) {
   Author.findById(req.params.id)
