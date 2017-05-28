@@ -1,30 +1,31 @@
 var express = require('express');
 var router = express.Router();
 
-var Author = require('../models/author');
+var User = require("../models/user");
+var Item = require("../models/item");
 
-// index authors
+// index
 router.get('/', function(req, res) {
-  // res.send('authors will be here');
-  Author.find({})
+  // find all books
+  User.find({})
     .exec(function(err, authors) {
       if (err) {
         console.log(err);
         return;
       }
+      // then pass the list to Handlebars to render
+      response.render('users/index', {
+                userList: userList
+            });
+        })
+})
+// new
+router.get('/new', function (request, response) {
+    // simply render the new user form
+    response.render('users/new');
+});
 
-      console.log(authors);
-      // res.send(authors);
-      res.render('authors/index', {
-          authors: authors
-      });
-    });
-});
-// new author
-router.get('/new', function(req, res) {
-  res.render('authors/new');
-});
-// edit author
+// edit
 router.get('/:id/edit', function(req,res) {
   Author.findById(req.params.id)
   .exec(function(err, author) {
