@@ -3,7 +3,7 @@ var router = express.Router();
 
 var Author = require('../models/author');
 
-// index
+// index authors
 router.get('/', function(req, res) {
   // res.send('authors will be here');
   Author.find({})
@@ -20,13 +20,11 @@ router.get('/', function(req, res) {
       });
     });
 });
-
-// new
+// new author
 router.get('/new', function(req, res) {
   res.render('authors/new');
 });
-
-// edit
+// edit author
 router.get('/:id/edit', function(req,res) {
   Author.findById(req.params.id)
   .exec(function(err, author) {
@@ -41,8 +39,7 @@ router.get('/:id/edit', function(req,res) {
   });
 });
 
-
-// show
+// show author
 router.get('/:id', function(req, res) {
   Author.findById(req.params.id)
     .exec(function(err, author) {
@@ -52,18 +49,18 @@ router.get('/:id', function(req, res) {
       }
 
       console.log(author);
-      //res.send(author);
+      // res.send(author);
       res.render('authors/show', {
         author: author
       });
     });
 });
-//create
+// create author
 router.post('/', function(req, res) {
   var author = new Author({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
-    category: req.body.category,
+    country: req.body.country,
     book_title: req.body.book_title,
     publication_year: req.body.publication_year
   });
@@ -80,8 +77,7 @@ router.post('/', function(req, res) {
     });
   });
 });
-
-// delete
+// delete author
 router.delete('/:id', function(req, res) {
   Author.findByIdAndRemove(req.params.id)
     .exec(function(err, author) {
@@ -90,20 +86,16 @@ router.delete('/:id', function(req, res) {
         return;
       }
 
-      console.log(author);
-      //res.send('Author deleted.');
-      res.render('authors/delete', {
-        author: author
-      });
+      console.log('Author deleted.');
+      res.send('Author deleted.');
     });
 });
-
-// update
+// update author
 router.patch('/:id', function(req, res) {
   Author.findByIdAndUpdate(req.params.id, {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
-    category: req.body.category,
+    country: req.body.country,
     book_title: req.body.book_title,
     publication_year: req.body.publication_year
   }, { new: true })
@@ -120,5 +112,6 @@ router.patch('/:id', function(req, res) {
       });
     });
 });
+
 
 module.exports = router;

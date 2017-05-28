@@ -1,163 +1,59 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/Planning-Poker');
 
-var Author = require("./models/author");
+var User = require('../models/user');
 
 mongoose.promise = global.Promise;
 
-Author.remove({}, function(err) {
+var User = require('../models/user');
+var Item = require('../models/item');
+
+// Use native promises
+mongoose.Promise = global.Promise;
+
+// First we clear the database of existing users and items.
+Item.remove({}, function(err){
   console.log(err);
 });
 
-var grisham = new Author({
-  first_name: 'John',
-  last_name: 'Grisham',
-  category: 'Thriller',
-  book_title: 'Confession',
-  publication_year: '2010'
+User.remove({}, function(err){
+  console.log(err);
 });
 
-var walker = new Author({
-  first_name: 'Alice',
-  last_name: 'Walker',
-  category: 'Fiction',
-  book_title: 'The Color Purple',
-  publication_year: '1982'
+// create new users
+var danny = new User({
+  first_name: 'Danny',
+  email: 'danny@gmail.com',
+  items: [{name: "Bike maintenance"}]
 });
 
-var berendt = new Author({
-  first_name: 'John',
-  last_name: 'Berendt',
-  category: 'True Crime',
-  book_title: 'Midnight in the Garden of Good and Evil',
-  publication_year: '2009'
+var maren = new User({
+  first_name: 'Maren',
+  email: 'maren@gmail.com',
+  items: [{name: "Get dry cleaning"}]
 });
 
-var crothers = new Author({
-  first_name: 'Tim',
-  last_name: 'Crothers',
-  category: 'Inpspirational',
-  book_title: 'The Queen of Katwe',
-  publication_year: '2013'
+var diesel = new User({
+  first_name: 'diesel',
+  email: 'diesel@gmail.com',
+  items: [{name: "Go to the dog park"}]
 });
 
-var franklin = new Author({
-  first_name: 'Judy',
-  last_name: 'Franklin',
-  category: 'Inpspirational',
-  book_title: 'Experiencing the Heavenly Realm',
-  publication_year: '2011'
+// save the users
+danny.save(function(err) {
+  if (err) console.log(err);
+
+  console.log('User created!');
 });
 
-var stone = new Author({
-  first_name: 'Perry',
-  last_name: 'Stone',
-  category: 'Inpspirational',
-  book_title: 'Openning the Gates of Heaven',
-  publication_year: '2012'
+maren.save(function(err) {
+  if (err) console.log(err);
+
+  console.log('User created!');
 });
 
-var ferrell = new Author({
-  first_name: 'L. Emerson',
-  last_name: 'Ferrell',
-  category: 'Inpspirational',
-  book_title: 'Immersed In Him',
-  publication_year: '2010'
-});
+diesel.save(function(err) {
+  if (err) console.log(err);
 
-var van der Steen = new Author({
-  first_name: 'Matheus',
-  last_name: 'van der Steen',
-  category: 'Inpspirational',
-  book_title: 'Dare to Dream',
-  publication_year: '2011'
-});
-
-var farwell = new Author({
-  first_name: 'Hanna',
-  last_name: 'Farwell',
-  category: 'Inpspirational',
-  book_title: 'The Sword and the Tambourine',
-  publication_year: '2010'
-});
-
-grisham.save(function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Grisham John created!');
-});
-
-walker.save(function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Walker Alice created!');
-});
-
-berendt.save(function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Berendt John created!');
-});
-
-crothers.save(function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Crothers Tim created!');
-});
-
-franklin.save(function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Franklin Judy created!');
-});
-
-stone.save(function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Stone Perry created!');
-});
-
-ferrell.save(function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Ferrell L. Emerson created!');
-});
-
-van der steen.save(function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('van der Steen Matheus created!');
-});
-
-farwell.save(function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Farwell Hanna created!');
+  console.log('User created!');
 });
