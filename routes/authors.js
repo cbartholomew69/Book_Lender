@@ -26,6 +26,21 @@ router.get('/new', function(req, res) {
   res.render('authors/new');
 });
 
+// edit author
+router.get('/:id/edit', function(req,res) {
+  Author.findById(req.params.id)
+  .exec(function(err, author) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    res.render('authors/edit', {
+      author: author
+    });
+  });
+});
+
 
 // show author
 router.get('/:id', function(req, res) {
@@ -48,7 +63,7 @@ router.post('/', function(req, res) {
   var author = new Author({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
-    country: req.body.country,
+    category: req.body.category,
     book_title: req.body.book_title,
     publication_year: req.body.publication_year
   });
