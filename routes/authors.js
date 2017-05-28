@@ -81,7 +81,7 @@ router.post('/', function(req, res) {
   });
 });
 
-// delete author
+// delete
 router.delete('/:id', function(req, res) {
   Author.findByIdAndRemove(req.params.id)
     .exec(function(err, author) {
