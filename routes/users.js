@@ -209,7 +209,6 @@ router.get('/:userId/items/:itemId/edit', function (request, response) {
             })
         })
 });
-
 // EDIT AN ITEM
 router.put('/:userId/items/:itemId', function (request, response) {
     // find the ID of the user we would like to edit
