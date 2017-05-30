@@ -1,17 +1,13 @@
-<div>
 <h1>The Book Lender</h1>
-
-<img src="https://elearningindustry.com/wp-content/uploads/2016/02/top-10-psychology-books-elearning-professional-read.jpg" alt="books" style="width:304px;height:228px;">
-</div>
 
 <img src="http://www.bradleysbookoutlet.com/wp-content/uploads/2013/06/bradleys-book-outlet-books-only-logo.png" alt="books" style="width:304px;height:228px;">
 
 <ol>
     {{#each books}}
     <li>
-        <h1><a href="/books/{{this.id}}">{{this.fullName}}</a></h1>
+        <h1><a href="/books/{{this.id}}">{{this.book_title}}</a></h1>
         <h3>{{this.catergory}}</h3>
-        <p>{{this.book_title}}</p>
+        <p>{{this.fullName}}</p>
     </li>
     {{/each}}
 </ol>
