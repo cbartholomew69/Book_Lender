@@ -8,7 +8,8 @@ var AuthorSchema = new Schema({
     last_name: String,
     category: String,
     book_title: String,
-    borrower_name: String,
+    publication_year: String,
+    borrower_name: String
 
 });
 

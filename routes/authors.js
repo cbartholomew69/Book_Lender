@@ -93,7 +93,9 @@ router.patch('/:id', function(req, res) {
 router.delete('/:id', function(req, res) {
     Author.findByIdAndRemove(req.params.id)
         .exec(function(err, author) {
-            if (err) { console.log(err); }
+            if (err) { console.log(err);
+              return;
+            }
 
             console.log('Author deleted.');
             // res.send('Author deleted.');
