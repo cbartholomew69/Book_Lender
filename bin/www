@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('planning-poker:server');
+var debug = require('debug')('Planning-Poker:server');
 var http = require('http');
 
 /**
