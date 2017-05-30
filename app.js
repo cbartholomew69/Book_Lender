@@ -7,15 +7,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var db = require('./db');
-var hbs = require('hbs')
+
 mongoose.connect('mongodb://localhost/Planning-Poker');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
-
-require('dotenv').config();
 var authors = require('./routes/authors');
-var app = express();
+
+var hbs = require('hbs');
 var router = express.Router();
+require('dotenv').config();
+
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +26,6 @@ app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use('/authors', authors);
 app.use(logger('dev'));
 app.use(router);
 app.use(bodyParser.json());
@@ -31,9 +33,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+
 app.use('/', index);
-//app.use('/authors', authors);
 app.use('/users', users);
+app.use('/authors', authors);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
