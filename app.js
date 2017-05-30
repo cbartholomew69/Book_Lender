@@ -12,7 +12,7 @@ mongoose.connect('mongodb://localhost/Planning-Poker');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var authors = require('./routes/authors');
+var books = require('./routes/books');
 
 var hbs = require('hbs');
 var router = express.Router();
@@ -36,7 +36,7 @@ app.use(methodOverride('_method'));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/authors', authors);
+app.use('/books', books);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

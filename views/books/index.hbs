@@ -1,0 +1,13 @@
+<h1>The Book Lender</h1>
+
+<ol>
+    {{#each books}}
+    <li>
+        <h1><a href="/books/{{this.id}}">{{this.fullName}}</a></h1>
+        <h3>{{this.catergory}}</h3>
+        <p>{{this.book_title}}</p>
+    </li>
+    {{/each}}
+</ol>
+
+<a href="/books/new" class="btn btn-default">Create a New Book</a>

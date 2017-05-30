@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/Planning-Poker');
 
-var Author = require("./models/author");
+var Book = require("./models/book");
 
 mongoose.promise = global.Promise;
 
-Author.remove({}, function(err) {
+Book.remove({}, function(err) {
   console.log(err);
 });
 
-var grisham = new Author({
+var grisham = new Book({
   first_name: 'John',
   last_name: 'Grisham',
   category: 'Thriller',
@@ -18,7 +18,7 @@ var grisham = new Author({
 
 });
 
-var walker = new Author({
+var walker = new Book({
   first_name: 'Alice',
   last_name: 'Walker',
   category: 'Fiction',
@@ -26,7 +26,7 @@ var walker = new Author({
   publication_year: '1982'
 });
 
-var berendt = new Author({
+var berendt = new Book({
   first_name: 'John',
   last_name: 'Berendt',
   category: 'True Crime',
@@ -34,7 +34,7 @@ var berendt = new Author({
   publication_year: '2009'
 });
 
-var crothers = new Author({
+var crothers = new Book({
   first_name: 'Tim',
   last_name: 'Crothers',
   category: 'United States',
@@ -42,7 +42,7 @@ var crothers = new Author({
   publication_year: '2013'
 });
 
-var franklin = new Author ({
+var franklin = new Book({
   first_name: 'Judy',
   last_name: 'Franklin',
   category: 'United States',
