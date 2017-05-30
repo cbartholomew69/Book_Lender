@@ -39,16 +39,28 @@ var berendt = new Book({
 var crothers = new Book({
   first_name: 'Tim',
   last_name: 'Crothers',
-  category: 'United States',
+  category: 'Inspirational',
   book_title: 'The Queen of Katwe'
 });
 
 var franklin = new Book({
   first_name: 'Judy',
   last_name: 'Franklin',
-  category: 'United States',
+  category: 'Inspirational',
   book_title: 'Experiencing The Heavenly Realm'
-})
+});
+
+var minichiello = new User({
+  first_name: 'CaSandra',
+  last_name: 'Minichiello',
+  email: 'minichiello_casandra@example.com'
+});
+
+var bart = new User({
+  first_name: 'Garden',
+  last_name: 'Bart',
+  email: 'bart_garden@example.com'
+});
 
 grisham.save(function(err) {
   if (err) {
@@ -93,4 +105,25 @@ franklin.save(function(err) {
   }
 
   console.log('Franklin Judy created!');
+
+});
+
+minichiello.save(function(err) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  console.log('Minichiello CaSandra created!');
+
+});
+
+bart.save(function(err) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  console.log('Bart Garden created!');
+
 });
