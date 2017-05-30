@@ -11,7 +11,7 @@ Deliverables:
 
 A working app, hosted on the heroku with link, working app in our Github repo A Git repository hosted on Github, with no less than 30 commits.
 
-MVP Some of the MVP that was needed to complete the project:
+MVP that was needed to complete the project:
 
 A working create page that allows creating of a book
 The ability for users to create, edit, and delete their info
