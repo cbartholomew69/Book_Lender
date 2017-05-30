@@ -28,7 +28,7 @@ router.get('/new', function(req, res) {
 
 // create users
 router.post('/', function(req, res) {
-    var users = new User({
+    var user = new User({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email
@@ -41,7 +41,7 @@ router.post('/', function(req, res) {
 
         console.log(user);
         // res.send(user);
-        res.render('user/show', {
+        res.render('users/show', {
             user: user
         });
     });

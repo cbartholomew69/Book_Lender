@@ -7,7 +7,6 @@ var UserSchema = new Schema({
     first_name: String,
     last_name: String,
     email: String
-
 });
 
 UserSchema.pre('save', function(next){
@@ -31,8 +30,8 @@ module.exports = mongoose.model("User", UserSchema);
 
 
 
-var Schema = require("../models/book.js");
-var mongoose = require('mongoose');
+// var Schema = require("../models/book.js");
+// var mongoose = require('mongoose');
 
-var User = Schema.User;
-module.exports = User;
+// var User = Schema.User;
+// module.exports = User;

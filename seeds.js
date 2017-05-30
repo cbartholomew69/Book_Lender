@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/Planning-Poker');
 
 var Book = require("./models/book");
+var User = require("./models/user");
 
 mongoose.promise = global.Promise;
 
@@ -9,12 +10,15 @@ Book.remove({}, function(err) {
   console.log(err);
 });
 
+User.remove({}, function(err) {
+  console.log(err);
+});
+
 var grisham = new Book({
   first_name: 'John',
   last_name: 'Grisham',
   category: 'Thriller',
-  book_title: 'Confession',
-  publication_year: '2010',
+  book_title: 'Confession'
 
 });
 
@@ -22,32 +26,28 @@ var walker = new Book({
   first_name: 'Alice',
   last_name: 'Walker',
   category: 'Fiction',
-  book_title: 'The Color Purple',
-  publication_year: '1982'
+  book_title: 'The Color Purple'
 });
 
 var berendt = new Book({
   first_name: 'John',
   last_name: 'Berendt',
   category: 'True Crime',
-  book_title: 'Midnight in the Garden of Good and Evil',
-  publication_year: '2009'
+  book_title: 'Midnight in the Garden of Good and Evil'
 });
 
 var crothers = new Book({
   first_name: 'Tim',
   last_name: 'Crothers',
   category: 'United States',
-  book_title: 'The Queen of Katwe',
-  publication_year: '2013'
+  book_title: 'The Queen of Katwe'
 });
 
 var franklin = new Book({
   first_name: 'Judy',
   last_name: 'Franklin',
   category: 'United States',
-  book_title: 'Experiencing The Heavenly Realm',
-  publication_year: '2011'
+  book_title: 'Experiencing The Heavenly Realm'
 })
 
 grisham.save(function(err) {

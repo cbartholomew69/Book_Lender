@@ -1,0 +1,13 @@
+<h1>The Book Borrower</h1>
+
+<ol>
+    {{#each users}}
+    <li>
+        <h1><a href="/users/{{this.id}}">{{this.fullName}}</a></h1>
+
+    </li>
+    {{/each}}
+</ol>
+
+<a href="/users/new" class="btn btn-default">Create a User</a>
+

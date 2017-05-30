@@ -1,9 +1,9 @@
 <h1>{{book.fullName}}</h1>
 <h3>{{book.category}}</h3>
-<p>{{book.book_title}}, {{book.borrower_name}}, {{book.is_borrowed}}</p>
+<p>{{book.book_title}}, {{book.is_borrowed}}</p>
 
 <div>
-    <a href="/books/{{book.id}}/edit" class="btn btn-primary">Edit {{book.fullName}}</a>
+    <a href="/books/{{book.id}}/edit" class="btn btn-primary">Edit {{book.book_title}}</a>
 </div>
 
 <form action="/books/{{book.id}}?_method=DELETE" method="POST">

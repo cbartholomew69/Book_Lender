@@ -8,9 +8,8 @@ var BookSchema = new Schema({
     last_name: String,
     category: String,
     book_title: String,
-    is_borrowed: String,
-    borrower_name: String
-
+    is_borrowed: Boolean
+    // borrower: [UserSchema]
 });
 
 BookSchema.pre('save', function(next){
