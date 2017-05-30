@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Book Recs' });
+router.get('/', function (request, response) {
+    response.redirect('/authors');
 });
 
 module.exports = router;

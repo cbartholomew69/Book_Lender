@@ -14,7 +14,8 @@ var grisham = new Author({
   last_name: 'Grisham',
   category: 'Thriller',
   book_title: 'Confession',
-  publication_year: '2010'
+  publication_year: '2010',
+
 });
 
 var walker = new Author({

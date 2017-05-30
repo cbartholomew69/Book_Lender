@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var db = require('./db');
-
+var hbs = require('hbs')
 mongoose.connect('mongodb://localhost/Planning-Poker');
 var index = require('./routes/index');
 var users = require('./routes/users');
