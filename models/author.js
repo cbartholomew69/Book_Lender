@@ -6,10 +6,10 @@ mongoose.promise = global.Promise;
 var AuthorSchema = new Schema({
     first_name: String,
     last_name: String,
-    country: String,
+    category: String,
     book_title: String,
-    publication_year: String,
-    category: String
+    borrower_name: String,
+
 });
 
 AuthorSchema.pre('save', function(next){

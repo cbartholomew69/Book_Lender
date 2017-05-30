@@ -5,112 +5,97 @@ var Author = require('../models/author');
 
 // index authors
 router.get('/', function(req, res) {
-  // res.send('authors will be here');
-  Author.find({})
-  .exec(function(err, author) {
-    if(err) {
-      console.log(err);
-      return;
-    }
-    //console.log(authors);
-    // res.send(authors);
-    res.render('authors/index', {
-      author: author
-    });
-  });
+    // res.send('authors will be here');
+    Author.find({})
+        .exec(function(err, authors) {
+            if(err) console.log(err);
+
+            console.log(authors);
+            // res.send(authors);
+            res.render('authors/index', {
+                  authors: authors
+            });
+        });
 });
+
 // new author
 router.get('/new', function(req, res) {
-  res.render('authors/new');
+    res.render('authors/new');
 });
+
 // create author
 router.post('/', function(req, res) {
-  var newAuthorForm = request.body;
-  var author = new Author({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    country: req.body.country,
-    book_title: req.body.book_title,
-    publication_year: req.body.publication_year,
-    category: req.body.category
-  });
-  author.save(function(err, author) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    //console.log(author);
-    // res.send(author);
-    res.redirect('/authors'); //{
-    //  author: author
-   // });
-  });
+    var author = new Author({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        country: req.body.country,
+        book_title: req.body.book_title,
+        publication_year: req.body.publication_year
+    });
+    author.save(function(err, author){
+        if (err) { console.log(err); }
+
+        console.log(author);
+        // res.send(author);
+        res.render('authors/show', {
+            author: author
+        });
+    });
 });
 
 // show author
 router.get('/:id', function(req, res) {
-  var authorId = request.params.id;
-  Author.findById(authorId)
-    .exec(function(err, author) {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      //console.log(author);
-      // res.send(author);
-      res.render('authors/show', {
-        author: author
-      });
-    });
-});
-// edit author
-router.get('/edit/:id', function(req,res) {
-  var authorId = request.params.id;
-  Author.findById(authorId)
-  .exec(function(err, author) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    res.render('authors/edit', {
-      author: author
-    });
-  });
-});
-//update author
-router.put('/:id', function(req, res) {
-    var authorId = request.params.id;
-    var newAuthorInfo = request.body.author;
-    Author.findByIdAndUpdate(authorId, newAuthorInfo, {new: true})//{
-   //     first_name: req.body.first_name,
-   //     last_name: req.body.last_name,
-   //     country: req.body.country,
-   //     book_title: req.body.book_title,
-   //     publication_year: req.body.publication_year,
-   //     category: req.body.category
-   // }, {new: true})
+    Author.findById(req.params.id)
         .exec(function(err, author) {
-            if (err) {
-              console.log(err);
-              return;
-            }
+            if(err) console.log(err);
 
-            //console.log(author);
+            console.log(author);
             // res.send(author);
-            res.redirect('/authors/' + authorId);
-            //    author: author
+            res.render('authors/show', {
+                author: author
             });
         });
+});
+
+// edit author
+router.get('/:id/edit', function(req,res) {
+    Author.findById(req.params.id)
+    .exec(function(err, author) {
+        if (err) { console.log(err); }
+
+        res.render('authors/edit', {
+            author: author
+        });
+    });
+});
+
+// update author
+router.patch('/:id', function(req, res) {
+    Author.findByIdAndUpdate(req.params.id, {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        country: req.body.country,
+        book_title: req.body.book_title,
+        publication_year: req.body.publication_year
+    }, {new: true})
+        .exec(function(err, author) {
+            if (err) { console.log(err); }
+
+            console.log(author);
+            // res.send(author);
+            res.render('authors/show', {
+                author: author
+            });
+        });
+});
+
 // delete author
 router.get('/delete/:id', function(req, res) {
-    var authorId = request.params.id;
-    Author.findByIdAndRemove(authorId)
+    Author.findByIdAndRemove(req.params.id)
         .exec(function(err, author) {
-            if (err) {
-              console.log(err);
-              return;
-            }
-            //console.log('Author deleted.');
+            if (err) { console.log(err); }
+
+            console.log('Author deleted.');
             // res.send('Author deleted.');
             // redirect back to the index route
             res.redirect('/authors');
