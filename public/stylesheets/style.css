@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 20px 'Poppins', sans-serif;
   text-align: left;
 }
 
@@ -10,6 +10,10 @@ a {
 
 a:hover {
   color: #b39800;
+}
+
+div {
+  text-align: center;
 }
 
 ol {
@@ -24,6 +28,12 @@ ul {
 
 ol li {
   padding-bottom: 15px;
+}
+
+img {
+  margin-top: 15px;
+  float: right;
+
 }
 
 .btn.btn-primary, .btn.btn-danger {

@@ -8,7 +8,7 @@ var BookSchema = new Schema({
     last_name: String,
     category: String,
     book_title: String,
-    is_borrowed: Boolean
+    //is_borrowed: Boolean
     // borrower: [UserSchema]
 });
 

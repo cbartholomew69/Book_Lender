@@ -30,8 +30,4 @@ module.exports = mongoose.model("User", UserSchema);
 
 
 
-// var Schema = require("../models/book.js");
-// var mongoose = require('mongoose');
 
-// var User = Schema.User;
-// module.exports = User;
