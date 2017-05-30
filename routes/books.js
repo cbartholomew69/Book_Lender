@@ -41,7 +41,7 @@ router.post('/', function(req, res) {
 
         console.log(book);
         // res.send(book);
-        res.render('book/show', {
+        res.render('books/show', {
             book: book
         });
     });
