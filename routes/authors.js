@@ -7,7 +7,7 @@ var Author = require('../models/author');
 router.get('/', function(req, res) {
   // res.send('authors will be here');
   Author.find({})
-  .exec(function(err, authors) {
+  .exec(function(err, author) {
     if(err) {
       console.log(err);
       return;
@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
     //console.log(authors);
     // res.send(authors);
     res.render('authors/index', {
-      authors: authors
+      author: author
     });
   });
 });
@@ -25,7 +25,7 @@ router.get('/new', function(req, res) {
 });
 // create author
 router.post('/', function(req, res) {
-  var newAuthor = request.body;
+  var newAuthorForm = request.body;
   var author = new Author({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
@@ -80,7 +80,7 @@ router.get('/edit/:id', function(req,res) {
 //update author
 router.put('/:id', function(req, res) {
     var authorId = request.params.id;
-    var newAuthorInfo = request.body;
+    var newAuthorInfo = request.body.author;
     Author.findByIdAndUpdate(authorId, newAuthorInfo, {new: true})//{
    //     first_name: req.body.first_name,
    //     last_name: req.body.last_name,
