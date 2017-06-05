@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/Planning-Poker');
 
-var Book = require("./models/book");
 var User = require("./models/user");
+var Book = require("./models/book");
+
 
 mongoose.promise = global.Promise;
 
@@ -13,7 +14,7 @@ Book.remove({}, function(err) {
 User.remove({}, function(err) {
   console.log(err);
 });
-
+//create new books
 var grisham = new Book({
   first_name: 'John',
   last_name: 'Grisham',
@@ -49,7 +50,7 @@ var franklin = new Book({
   category: 'Inspirational',
   book_title: 'Experiencing The Heavenly Realm'
 });
-
+//create users
 var minichiello = new User({
   first_name: 'CaSandra',
   last_name: 'Minichiello',
@@ -61,7 +62,7 @@ var bart = new User({
   last_name: 'Bart',
   email: 'bart_garden@example.com'
 });
-
+//save books
 grisham.save(function(err) {
   if (err) {
     console.log(err);
@@ -107,7 +108,7 @@ franklin.save(function(err) {
   console.log('Franklin Judy created!');
 
 });
-
+//save users
 minichiello.save(function(err) {
   if (err) {
     console.log(err);
