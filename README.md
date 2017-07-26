@@ -15,7 +15,7 @@ A Git repository hosted on Github, with no less than 30 commits.
 
 ___
 
-# MVP that was needed to complete the project:
+# MVP:
 
 A working create page that allows creating of a book
 The ability for users to create, edit, and delete their info
