@@ -1,5 +1,3 @@
-# Book_Lender
-
 # Book Lending App
 
 ___
